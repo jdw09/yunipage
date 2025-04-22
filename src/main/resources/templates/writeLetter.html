@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayatsuno Yuni Fan Site</title>
+    <link rel="stylesheet" th:href="@{/writeLetter.css?after}">
+</head>
+<body>
+    <div id="bgdiv">
+        <iframe id="bgVideo" src="https://www.youtube.com/embed/R_RAWjqdgTs?autoplay=1&mute=1&controls=0&loop=1&playlist=R_RAWjqdgTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div></div>
+    </div>
+
+    <header>
+        <a href="/"><img th:src="@{/img/YuniSign.png}" alt="Yuni Sign" id="logo"></a>
+        <nav id="nav_main">
+            <ul class="font2">
+                <a href="/"><li>Home</li></a>
+                <a href="/writeLetter"><li>편지 쓰기</li></a>
+                <li>레전드 클립 보관소</li>
+                <a href="/counter"><li>유튜브 카운터</li></a>
+            </ul>
+        </nav>
+       
+    </header>
+    <!-- floating buttons -->
+    <!-- <button id="topbtn" class="font5">Top</button> -->
+    <button id="playmusic"></button>
+    
+    <!-- main body -->
+    <div id="Main">
+        <h1 id="MainTitle" class="font4">유니에게 편지 쓰기</h1>
+        <p id="MainDescription" class="font3">유니에게 하고 싶은 말을 마음껏 써주세요.<br>※비방 및 욕설이 들어간 글은 삭제됩니다※</p>
+    </div>
+
+    <div id="letterSection">
+        <form action="/submitLetter" method="post" id="letterform">
+            <textarea name="content" id="letterarea" placeholder="유니에게 하고 싶은 말을 마음껏 써주세요!!" class="font3"></textarea>
+        </form>
+    </div>
+    <button type="submit" form="letterform" id="submitBtn" class="font5">제출하기</button>
+
+    <!-- footer -->
+    <footer>
+        <p class="font2">이 사이트는 공식 페이지가 아닌 팬 사이트입니다.<br>이 사이트는 Stellive와는 무관합니다.</p>
+    </footer>
+</body>
+</html>
+
+<script>
+    const topbtn = document.querySelector("#topbtn");
+    const playmusic = document.querySelector("#playmusic");
+    const audio = new Audio();
+    let currentSoundIndex = 0;
+    let currentSequence = [];
+
+    topbtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    });
+
+    const playSequence = (sounds) => {
+        currentSequence = sounds;
+        currentSoundIndex = 0;
+
+        const playNextSound = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                audio.src = currentSequence[currentSoundIndex++];
+                audio.currentTime = 0;
+                audio.play();
+            }
+        };
+
+        // 기존 'ended' 이벤트 중복 방지
+        audio.removeEventListener("ended", audio._onEnded);
+        audio._onEnded = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                playNextSound();
+            } else {
+                currentSoundIndex = 0;
+                playNextSound();
+            }
+        };
+        audio.addEventListener("ended", audio._onEnded);
+
+        playNextSound();
+    };
+
+    playmusic.addEventListener("click", () => {
+        if (audio.paused || audio.ended) {
+            playSequence(["/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
+        } else {
+            audio.pause();
+        }
+    });
+</script>

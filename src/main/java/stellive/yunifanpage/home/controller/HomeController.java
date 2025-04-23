@@ -28,13 +28,7 @@ public class HomeController {
         List<GestBookModel> content = gestBookService.getContent();
         model.addAttribute("yunidebut", yunidebut);
         model.addAttribute("bookContent", content);
-        String a= "aaa";
         return "home";
-    }
-
-    @GetMapping("/counter")
-    public String counter() {
-        return "youtubeCounter";
     }
 
     @PostMapping("/addGestBook")

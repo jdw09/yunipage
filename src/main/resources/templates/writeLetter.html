@@ -49,19 +49,10 @@
 </html>
 
 <script>
-    const topbtn = document.querySelector("#topbtn");
     const playmusic = document.querySelector("#playmusic");
     const audio = new Audio();
     let currentSoundIndex = 0;
     let currentSequence = [];
-
-    topbtn.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        });
-    });
 
     const playSequence = (sounds) => {
         currentSequence = sounds;
@@ -91,8 +82,8 @@
     };
 
     playmusic.addEventListener("click", () => {
-        if (audio.paused || audio.ended) {
-            playSequence(["/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
+        if (audio.paused) {
+            playSequence(["/audio/SUPADOPA.mp3", "/audio/내꺼하는법.mp3"]);
         } else {
             audio.pause();
         }

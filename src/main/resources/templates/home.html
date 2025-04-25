@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayatsuno Yuni Fan Site</title>
     <link rel="stylesheet" th:href="@{/home.css?after}">
+    <script>
+        // 모바일 기기 감지
+        function isMobileDevice() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+    
+        // 페이지 로드 시 실행
+        window.onload = function() {
+          if (isMobileDevice()) {
+            // 모바일일 경우 이동할 링크로 리디렉션
+            window.location.href = "/mobile"; // 원하는 모바일 페이지 URL로 변경
+          }
+        };
+      </script>
 </head>
 <body>
     <div id="bgdiv">
@@ -18,7 +32,7 @@
             <ul class="font2">
                 <a href="/"><li>Home</li></a>
                 <a href="/writeLetter"><li>편지 쓰기</li></a>
-                <li>레전드 클립 보관소</li>
+                <a href="/legend"><li>레전드 클립 보관소</li></a>
                 <a href="/counter"><li>유튜브 카운터</li></a>
             </ul>
         </nav>
@@ -48,11 +62,10 @@
         </div>
         <div class="font3" id="aboutYuniContent">
             <img th:src="@{/img/데뷔축전.webp}" alt="">
-            <p>성별 : 여성
+            <p>성별 : 여성<br>
                 종족: 유니콘<br>
                 나이 : 4세<br>
                 생일 : 5월 21일<br>
-                신체 : 150cm｜A형<br>
                 반려묘 : 다루(러시안 블루), 카니<br>
                 소속 : 스텔라이브<br>
                 MBTI : ISTP<br>
@@ -62,7 +75,7 @@
                 ☪️별과 초승달 | 🤍흰색 하트<br>
                 팬네임 : 아르냥<br>
                 데뷔 : <br>
-                2023년 1월 8일(스텔라이브)<br>
+                2023년 1월 8일<br>
                 D+[[${yunidebut}]]일</p>
         </div>
     </div>

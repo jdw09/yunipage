@@ -18,7 +18,7 @@
             <ul class="font2">
                 <a href="/"><li>Home</li></a>
                 <a href="/writeLetter"><li>편지 쓰기</li></a>
-                <li>레전드 클립 보관소</li>
+                <a href="/legend"><li>레전드 클립 보관소</li></a>
                 <a href="/counter"><li>유튜브 카운터</li></a>
             </ul>
         </nav>
@@ -86,7 +86,7 @@
 
     playmusic.addEventListener("click", () => {
         if (audio.paused || audio.ended) {
-            playSequence(["/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
+            playSequence(["/audio/tenbyounoUta.mp3","/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
         } else {
             audio.pause();
         }

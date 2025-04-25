@@ -31,15 +31,29 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/mobile")
+    public String mobile(Model model) {
+        String yunidebut = HomeService.getYuniDebut();
+        List<GestBookModel> content = gestBookService.getContent();
+        model.addAttribute("yunidebut", yunidebut);
+        model.addAttribute("bookContent", content);
+        return "mobile/home-mobile";
+    }
+
     @PostMapping("/addGestBook")
     public String addGestBook(@RequestParam String content, String name) {
         this.content = content;
         this.name = name;
         String[] bookContent = {content, name};
         if (bookContent[0] == null || bookContent[1] == null || bookContent[0].isEmpty() || bookContent[1].isEmpty()) {
-            return "gestBookNotSucceed";
+            return "isSucceed/gestBookNotSucceed";
         }
         gestBookService.addGestBook(bookContent);
-        return "gestBookSucceed";
+        return "isSucceed/gestBookSucceed";
+    }
+
+    @GetMapping("/legend")
+    public String legend() {
+        return "legend";
     }
 }

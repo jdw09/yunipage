@@ -25,10 +25,10 @@ public class LetterController {
     public String addLetter(@RequestParam("content") String content) {
         this.content = content;
         if (content == null || content.isEmpty()) {
-            return "LetterNotSucceed";
+            return "isSucceed/LetterNotSucceed";
         }
         letterService.addLetter(content);
-        return "LetterSucceed";
+        return "isSucceed/LetterSucceed";
     }
 
     @GetMapping("/writeLetter")

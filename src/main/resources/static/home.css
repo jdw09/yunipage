@@ -90,6 +90,7 @@ header {
     height: 75px;
     border-bottom: 1px solid black;
     background-color: #EEEEEEde;
+    z-index: 1000;
 }
 
 
@@ -121,12 +122,25 @@ header ul a:visited {
     color: black;
 }
 
+#home {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
 #topbtn {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 93%;
     left: 1.5%;
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 40px;
+    height: 40px;
     border-radius: 35%;
     background-color: #DDCFFE;
 }
@@ -136,17 +150,16 @@ header ul a:visited {
     color: white;
     font-size: 48px;
     text-align: right;
-    left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(0,-50%);
 }
 
 #playmusic {
     position: fixed;
     right: 0.2vw;
     top: 90vh;
-    width: 3vw;
-    height: 3vw;
+    width: 40px;
+    height: 40px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 0;
@@ -197,29 +210,28 @@ a:visited {
 }
 
 footer {
+    position: fixed;
     color: white;
     display: flex;
-    margin-top: 93vh;
+    top: 93vh;
     justify-content: right;
     text-align: right;
-    margin-right: 1%;
-}
-
-footer > p {
-    position: fixed
+    right: 1vw;
 }
 
 #aboutYuni {
-    height: 80vh;
-    padding: 10vh;
-    padding-top: 15vh;
+    height: auto;
+    overflow: hidden;
+    padding-top: 15vmin;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 #gestBook {
-    height: 70vh;
-    padding: 10vh;
+    height: auto;
+    width: auto;
+    padding-top: 10vh;
     background-color: rgba(0, 0, 0, 0.5);
+    padding-bottom: 10vh;
 }
 
 #aboutYuniTitle > h1 {
@@ -231,7 +243,7 @@ footer > p {
     margin-bottom: 5vh;
 }
 
-#aboutYuniTitle > h1, img{
+#aboutYuniTitle > h1, #social{
     padding-left: 15px;
     display: inline;
 
@@ -239,6 +251,7 @@ footer > p {
 
 .iconlogo {
     width: 30px;
+    height: 30px;
     border-radius: 25%;
 }
 
@@ -353,10 +366,110 @@ footer > p {
 #gestBook > button {
     position: absolute;
     right: 15vw;
-    width: 3vw;
+    width: 40px;
     height: 2.3vh;
     margin-top: 1vh;
     background-color: #DDCFFE;
     border-radius: 12.5px;
     border: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+
+    #bgVideo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 177.78vh; /* 100 * (16/9) */
+        height: 100vh;
+        pointer-events: none;
+        border: none;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+    }
+
+    header a {
+        margin-left: 0;
+    }
+
+    header nav {
+        margin: 0;
+    }
+
+    header nav ul{
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    header > img {
+        display: block;
+    }
+
+    header nav ul a{
+        width: 120px;
+        margin: 0 0.2vw 0 0.2vw;
+        
+    }
+
+    #logo {
+        margin-left: 50vw;
+        margin-right: auto;
+        transform: translate(-50%, 0);
+    }
+
+    #MainTitle {
+        right: 50%;
+        transform: translate(50%,-50%);
+    }
+
+    #aboutYuniTitle > h1 {
+        display: block;
+        margin-left: 50vw;
+        padding: 0;
+        text-align: center;
+        transform: translate(-50%,0);
+    }
+
+    #social {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #social a{
+        margin: 0 10px 0 10px;
+    }
+
+    #aboutYuniContent {
+        flex-direction: column;
+    }
+
+    #aboutYuniContent img {
+        width: 65vw;
+    }
+
+    #aboutYuniContent p {
+        font-size: 5vw;
+    }
+    
+}
+
+@media screen and (max-height: 750px) {
+    footer {
+        top: 90vh;
+    }
+
+    .playmusic {
+        top: 87vh;
+    }
 }

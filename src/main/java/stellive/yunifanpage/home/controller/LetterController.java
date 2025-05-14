@@ -1,5 +1,6 @@
 package stellive.yunifanpage.home.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,10 @@ import stellive.yunifanpage.home.service.LetterService;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class LetterController {
     private final LetterService letterService;
     private String content;
-
-    public LetterController(LetterService letterService, LetterRepository letterRepository) { this.letterService = letterService; }
 
     @PostMapping("/submitLetter")
     public String addLetter(@RequestParam("content") String content) {

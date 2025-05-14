@@ -167,10 +167,13 @@ header ul a:visited {
 
 #topbtn {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 93%;
     left: 1.5%;
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 40px;
+    height: 40px;
     border-radius: 35%;
     background-color: #DDCFFE;
 }
@@ -179,8 +182,8 @@ header ul a:visited {
     position: fixed;
     right: 0.2vw;
     top: 90vh;
-    width: 3vw;
-    height: 3vw;
+    width: 40px;
+    height: 40px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 0;
@@ -214,7 +217,7 @@ footer {
     position: absolute;
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
     left: 50%;
     top: 25vh;
     transform: translate(-50%,-50%);
@@ -222,6 +225,7 @@ footer {
 
 #MainTitle {
     margin-bottom: 0;
+    font-size: 65px;
 }
 
 #MainDescription {
@@ -260,8 +264,8 @@ footer {
 
 #submitBtn {
     position: absolute;
-    width: 20vw;
-    height: 7vh;
+    width: 200px;
+    height: 50px;
     top: 85vh;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -269,5 +273,75 @@ footer {
     color: white;
     border: none;
     border-radius: 25px;
-    font-size: 1.25vw;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    #bgVideo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 177.78vh; /* 100 * (16/9) */
+        height: 100vh;
+        pointer-events: none;
+        border: none;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+    }
+
+    header a {
+        margin-left: 0;
+    }
+
+    header nav {
+        margin: 0;
+    }
+
+    header nav ul{
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    header > img {
+        display: block;
+    }
+
+    header nav ul a{
+        width: 120px;
+        margin: 0 0.2vw 0 0.2vw;
+        
+    }
+
+    #logo {
+        margin-left: 50vw;
+        margin-right: auto;
+        transform: translate(-50%, 0);
+    }
+
+    #MainTitle {
+        font-size: 35px;
+    }
+
+    #MainDescription {
+        font-size: 12px;
+    }
+
+    #letterarea {
+        width: 67vw;
+        height: 40vh;
+    }
+
+    #submitBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 15px;
+    }
 }

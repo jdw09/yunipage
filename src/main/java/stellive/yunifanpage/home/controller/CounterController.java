@@ -1,23 +1,18 @@
 package stellive.yunifanpage.home.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import stellive.yunifanpage.home.service.YoutubeService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class CounterController {
 
     private final YoutubeService youtubeService;
-
-    public CounterController(YoutubeService youtubeService) {
-        this.youtubeService = youtubeService;
-    }
 
     @GetMapping("/counter")
     public String counter(Model model) throws JSONException {

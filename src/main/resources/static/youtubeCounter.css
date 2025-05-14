@@ -124,6 +124,9 @@ body {
     margin: 0;
     background-attachment: fixed;
     overflow: scroll;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 header {
@@ -167,10 +170,13 @@ header ul a:visited {
 
 #topbtn {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 93%;
     left: 1.5%;
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 40px;
+    height: 40px;
     border-radius: 35%;
     background-color: #DDCFFE;
 }
@@ -179,8 +185,8 @@ header ul a:visited {
     position: fixed;
     right: 0.2vw;
     top: 90vh;
-    width: 3vw;
-    height: 3vw;
+    width: 40px;
+    height: 40px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 0;
@@ -214,13 +220,14 @@ footer {
     position: absolute;
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
     left: 50%;
     top: 25vh;
     transform: translate(-50%,-50%);
 }
 
 #MainTitle {
+    font-size: 45px;
     margin-bottom: 0;
 }
 
@@ -233,10 +240,11 @@ footer {
 #countUl {
     margin: 0 auto;
     margin-top: 40vh;
-    width: 65vw;
     height: 55vh;
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 100px;
 }
 
 #countUl li {
@@ -245,14 +253,90 @@ footer {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    list-style-type: none;
+}
+
+#countUl li img {
+    width: 30vmax;
+    margin: 15px;
 }
 
 #Title {
-    font-size: 2vw;
+    font-size: 20px;
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
 
 #Views {
-    font-size: 1vw;
+    font-size: 10px;
+}
+
+@media screen and (max-width: 600px) {
+
+    #bgVideo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 177.78vh; /* 100 * (16/9) */
+        height: 100vh;
+        pointer-events: none;
+        border: none;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+    }
+
+    header a {
+        margin-left: 0;
+    }
+
+    header nav {
+        margin: 0;
+    }
+
+    header nav ul{
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    header > img {
+        display: block;
+    }
+
+    header nav ul a{
+        width: 120px;
+        margin: 0 0.2vw 0 0.2vw;
+        
+    }
+
+    #logo {
+        margin-left: 50vw;
+        margin-right: auto;
+        transform: translate(-50%, 0);
+    }
+
+    #MainTitle {
+        font-size: 30px;
+    }
+
+    #MainDescription {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-height: 750px) {
+    footer {
+        top: 90vh;
+    }
+
+    .playmusic {
+        top: 87vh;
+    }
 }

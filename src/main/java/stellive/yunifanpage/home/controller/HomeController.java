@@ -38,4 +38,6 @@ public class HomeController {
     public String legend() {
         return "legend";
     }
+
+
 }

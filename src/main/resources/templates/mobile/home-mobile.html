@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayatsuno Yuni Fan Site</title>
+    <link rel="stylesheet" th:href="@{/css/home-mobile.css?after}">
+    <script>
+        // 모바일 기기 감지
+        function isMobileDevice() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+    
+        // 페이지 로드 시 실행
+        window.onload = function() {
+          if (!(isMobileDevice())) {
+            // 모바일일 경우 이동할 링크로 리디렉션
+            window.location.href = "/"; // 원하는 모바일 페이지 URL로 변경
+          }
+        };
+      </script>
+</head>
+<body>
+    <div id="bgdiv">
+        <iframe id="bgVideo" src="https://www.youtube.com/embed/U58NhG-zD90?autoplay=1&mute=1&controls=0&start=8&loop=1&playlist=U58NhG-zD90&modestbranding=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="overlay"></div>
+    </div>
+
+    <header>
+        <a href="/static"><img th:src="@{/img/YuniSign.png}" alt="Yuni Sign" id="logo"></a>
+        <!-- <nav id="nav_main">
+            <ul class="font2">
+                <a href="/"><li>Home</li></a>
+                <a href="/writeLetter"><li>편지 쓰기</li></a>
+                <a href="/legend"><li>레전드 클립 보관소</li></a>
+                <a href="/counter"><li>유튜브 카운터</li></a>
+            </ul>
+        </nav> -->
+       
+    </header>
+
+    <div id="main">
+        <h1 id="MainTitle" class="font8">Ayatsuno Yuni<br>Fan Site.</h1>
+        <button id="playmusic"></button>
+        <p class="navbtn" id="navAboutYuni"><a href="#aboutYuni">About Yuni</a></p>
+        <p class="navbtn" id="navGuestBook"><a href="#gestBook">방명록 쓰러가기</a></p>
+
+        <footer>
+            <p class="font2">이 사이트는 공식 페이지가 아닌 팬 사이트입니다.<br>이 사이트는 Stellive와는 무관합니다.</p>
+        </footer>
+    </div>
+    <div id="gradiant"></div>
+
+    <div id="aboutYuni">
+        <div id="aboutYuniTitle">
+            <h1 class="font5">AboutYuni</h1>
+            <div>
+                <a href="https://chzzk.naver.com/45e71a76e949e16a34764deb962f9d9f"><img src="https://img3.yna.co.kr/etc/inner/KR/2024/04/09/AKR20240409121300017_01_i_P4.jpg" alt="치지직 로고" class="iconlogo"></a>
+            <a href="https://www.youtube.com/@ayatsunoyuni"><img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="치지직 로고" class="iconlogo"></a>
+            <a href="https://x.com/AyatsunoYuni"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/500px-X_logo.jpg" alt="치지직 로고" class="iconlogo"></a>
+            </div>
+        </div>
+        <div class="font3" id="aboutYuniContent">
+            <img th:src="@{/img/데뷔축전.webp}" alt="">
+            <p>성별 : 여성<br>
+                종족: 유니콘<br>
+                나이 : 4세<br>
+                생일 : 5월 21일<br>
+                반려묘 : 다루(러시안 블루), 카니<br>
+                소속 : 스텔라이브<br>
+                MBTI : ISTP<br>
+                마마 : 나비<br>
+                Live2D : KAXA<br>
+                오시마크 : <br>
+                ☪️별과 초승달 | 🤍흰색 하트<br>
+                팬네임 : 아르냥<br>
+                데뷔 : <br>
+                2023년 1월 8일<br>
+                D+[[${yunidebut}]]일</p>
+        </div>
+    </div>
+
+    <div id="gestBook">
+        <h1 class="font5">방명록</h1>
+
+
+        <div class="bookdiv">
+            <ul>
+                <li th:each="i : ${#numbers.sequence(bookContent.size()-1, 0, -1)}">
+                    <div class="bookshell">
+                        <p id="bookcontent" class="font4">[[${bookContent[i].content}]]</p>
+                    </div>
+                    <p id="bookname" class="font4">[[${bookContent[i].name}]]</p>
+                </li>
+            </ul>
+        </div>    
+        <div>
+            <form action="/addGestBook" method="post" id="addGestBookForm">
+                <div id="bookInput">
+                    <input type="text" id="contentInput" placeholder="내용을 입력하세요." class="bookInputShell" name="content">
+                </div>
+                <div id="nameDiv">
+                    <input type="text" id="nameInput" placeholder="닉네임을 입력하세요." class="bookInputShell" name="name">
+                </div>
+            </form>
+        </div>
+        <button type="submit" form="addGestBookForm" class="font4">추가</button>
+    </div>
+
+</body>
+</html>
+
+<script>
+    const playmusic = document.querySelector("#playmusic");
+    const audio = new Audio();
+    let currentSoundIndex = 0;
+    let currentSequence = [];
+
+    const playSequence = (sounds) => {
+        currentSequence = sounds;
+        currentSoundIndex = 0;
+
+        const playNextSound = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                audio.src = currentSequence[currentSoundIndex++];
+                audio.currentTime = 0;
+                audio.play();
+            }
+        };
+
+        // 기존 'ended' 이벤트 중복 방지
+        audio.removeEventListener("ended", audio._onEnded);
+        audio._onEnded = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                playNextSound();
+            } else {
+                currentSoundIndex = 0;
+                playNextSound();
+            }
+        };
+        audio.addEventListener("ended", audio._onEnded);
+
+        playNextSound();
+    };
+
+    playmusic.addEventListener("click", () => {
+        if (audio.paused || audio.ended) {
+            playSequence(["/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
+        } else {
+            audio.pause();
+        }
+    });
+</script>

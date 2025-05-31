@@ -10,23 +10,9 @@ spring:
       ddl-auto: none
     show-sql: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:55001/yunipage?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
-    username: root
-    password: 6262
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PW}
 
 server:
   port: 80
-
-#
-#  spring.application.name=yunifanpage
-#
-#spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQLDialect
-#spring.datasource.url=${DBURL}
-#spring.datasource.username=${DBUSER}
-#spring.datasource.password=${DBPW}
-#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-#spring.jpa.hibernate.ddl-auto=none
-#spring.jpa.show-sql=true
-#spring.jpa.properties.hibernate.format_sql=true
-#spring.jpa.properties.hibernate.globally_quoted_identifiers=true
-#spring.mobile.devicedelegatingviewresolver.enabled:true

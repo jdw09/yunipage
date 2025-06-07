@@ -1,0 +1,412 @@
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy.css');
+
+.font2 {
+    font-family: 'Paperlogy';
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-2ExtraLight.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-2ExtraLight.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-2ExtraLight.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-2ExtraLight.ttf') format('truetype');
+}
+
+.font3 {
+    font-family: 'Paperlogy';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.ttf') format('truetype');
+}
+
+.font4 {
+    font-family: 'Paperlogy';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.ttf') format('truetype');
+}
+
+.font5 {
+    font-family: 'Paperlogy';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-5Medium.ttf') format('truetype');
+}
+
+.font8 {
+    font-family: 'Paperlogy';
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.ttf') format('truetype');
+}
+
+#bgdiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1000;
+}
+
+#bgVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 177.78vh; /* 100 * (16/9) */
+    height: 100vh;
+    pointer-events: none;
+    border: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #bgVideo {
+        width: 100vw;
+        height: 56.25vw; /* 100 * (9/16) */
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    z-index: 0;
+}
+
+
+body {
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("img/Bgimg.png");
+    background-size: cover;
+    background-color: black; */
+    margin: 0;
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 5vh;
+    width: 100%;
+    border-bottom: 1px solid black;
+    background-color: #EEEEEEee;
+    z-index: 1000;
+}
+
+
+
+#logo {
+    position: absolute;
+    left: 50vw;
+    top: 2.5vh;
+    transform: translate(-50%, -50%);
+    width: 50px;
+}
+
+/* header > nav {
+    margin-top: 17px;
+    margin-right: 30px;
+    font-size: 10px;
+    float: right;
+} */
+
+/* header ul li {
+    display: inline;
+    padding: 25px;
+}
+
+header ul a:link {
+    color: black;
+}
+
+header ul a:visited {
+    color: black;
+} */
+
+#main {
+    width: 100%;
+    height: 70vh;
+}
+
+#topbtn {
+    position: fixed;
+    top: 93%;
+    left: 1.5%;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 35%;
+    background-color: #DDCFFE;
+}
+
+#MainTitle {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#playmusic {
+    position: fixed;
+    right: 1vw;
+    top: 95vh;
+    width: 15vw;
+    height: 15vw;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 0;
+    background-image: url("/img/MusicPlay.png");
+    background-size: cover;
+}
+
+.navbtn {
+    position: absolute;
+    font-family: Paperlogy-4Regular;
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.ttf') format('truetype');
+    color: white;
+    text-align: center;
+    align-items: center;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#navAboutYuni {
+    top: 85%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+#navGuestBook {
+    top: 88%
+}
+
+#gradiant {
+    height: 10vh;
+    width: 100vw;
+    background: linear-gradient(to top, rgb(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+footer {
+    color: white;
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+    text-align: center;
+    margin-right: 1%;
+    font-size: 2vw;
+}
+
+footer > p {
+    position: fixed
+}
+
+#aboutYuni {
+    height: 100%;
+    width: 100%;
+    padding-top: 15vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#aboutYuniTitle {
+    margin-bottom: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#aboutYuniTitle > h1 {
+    text-align: center;
+    font-size: 7vw;
+    color: white;
+}
+
+#aboutYuniTitle > div {
+    position: absolute;
+    left: 50vw;
+    margin-top: 15vh;
+    transform: translate(-50%,-50%);
+
+}
+
+.iconlogo {
+    width: 30px;
+    border-radius: 25%;
+}
+
+#aboutYuniContent {
+    justify-content: center;
+    align-items: center;
+}
+
+#aboutYuniContent > img{
+    width: 75vw;
+}
+
+#aboutYuniContent > p {
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+    overflow-x: hidden;
+}
+
+#gestBook {
+    height: 70vh;
+    padding: 10vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#gestBook > h1 {
+    text-align: center;
+    color: white;
+    font-size: 7vw;
+}
+
+.bookdiv {
+    position: relative;
+    margin-top: 5vh;
+    width: 100%;
+    height: 35vh;
+    overflow-y: scroll;
+}
+
+.bookdiv ul li {
+    justify-content: center;
+    padding: 0.5vw;
+}
+
+.bookdiv ul {
+    padding: 0;
+}
+
+.bookshell {
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 5vh;
+    width: 70vw;
+    background-color: #E5E5E5;
+    overflow-y: hidden;
+}
+
+#bookcontent {
+    margin-left: 1vw;
+    display: block;
+    text-align: left;
+    font-size: 2vh;
+    margin-bottom: 5%;
+    white-space: normal;
+}
+
+#bookname {
+    text-align: right;
+    margin-top: -1.5vh;
+    margin-right: 0.5vw;
+    font-size: 1vh;
+}
+
+#bookInput {
+    margin: none;
+    height: 10vh;
+    width: 100%;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    align-items: center;
+}
+
+#nameDiv {
+    margin: none;
+    height: 4.5vh;
+    margin-top: 1vh;
+    width: 100%;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.bookInputShell {
+    margin-top: 2.7vh;
+    transform: translate(0, -50%);
+    height: 5vh;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    border-bottom: 1px solid black;
+    font-size: 1.7vh;
+    font-family: 'Paperlogy';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.otf') format('opentype'),
+    url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-3Light.ttf') format('truetype');
+}
+
+#contentInput {
+    margin-left: 2vw;
+    margin-top: 5vh;
+    height: 10vh;
+    width: 90%;
+}
+
+#nameInput {
+    margin-left: 2vw;
+    width: 100%;
+    height: 4vh;
+    margin-top: 2vh;
+}
+
+#gestBook > button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 58vw;
+    height: 2.3vh;
+    margin-top: 1vh;
+    background-color: #DDCFFE;
+    border-radius: 12.5px;
+    border: 0;
+}

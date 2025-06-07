@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayatsuno Yuni Fan Site</title>
+    <link rel="stylesheet" th:href="@{/css/youtubeCounter.css?after}">
+</head>
+<body>
+    <div id="bgdiv">
+        <iframe id="bgVideo" src="https://www.youtube.com/embed/QDIdN_eBvl0?autoplay=1&mute=1&controls=0&loop=1&playlist=QDIdN_eBvl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div></div>
+    </div>
+
+    <header>
+        <a href="/"><img th:src="@{/img/YuniSign.png}" alt="Yuni Sign" id="logo"></a>
+        <nav id="nav_main">
+            <ul class="font2">
+                <a href="/"><li>Home</li></a>
+                <a href="/writeLetter"><li>편지 쓰기</li></a>
+                <a href="/legend"><li>레전드 클립 보관소</li></a>
+                <a href="/counter"><li>유튜브 카운터</li></a>
+            </ul>
+        </nav>
+       
+    </header>
+    <!-- floating buttons -->
+    <!-- <button id="topbtn" class="font5">Top</button> -->
+    <button id="playmusic"></button>
+    
+    <!-- main body -->
+    <div id="Main">
+        <h1 id="MainTitle" class="font4">레전드 클립 보관소</h1>
+        <p id="MainDescription" class="font3">유니유니의 레전트 클립 보관소 입니다.</p>
+    </div>
+
+    <h1 style="position:absolute; top: 50vh; left: 50vw; transform: translate(-50%, -50%); color: white; font-size: 3vw;" class="font7">준비중입니다.</h1>
+
+    <!-- footer -->
+    <footer>
+        <p class="font2">이 사이트는 공식 페이지가 아닌 팬 사이트입니다.<br>이 사이트는 Stellive와는 무관합니다.</p>
+    </footer>
+</body>
+</html>
+
+<script>
+    const playmusic = document.querySelector("#playmusic");
+    const audio = new Audio();
+    let currentSoundIndex = 0;
+    let currentSequence = [];
+
+    const playSequence = (sounds) => {
+        currentSequence = sounds;
+        currentSoundIndex = 0;
+
+        const playNextSound = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                audio.src = currentSequence[currentSoundIndex++];
+                audio.currentTime = 0;
+                audio.play();
+            }
+        };
+
+        // 기존 'ended' 이벤트 중복 방지
+        audio.removeEventListener("ended", audio._onEnded);
+        audio._onEnded = () => {
+            if (currentSoundIndex < currentSequence.length) {
+                playNextSound();
+            } else {
+                currentSoundIndex = 0;
+                playNextSound();
+            }
+        };
+        audio.addEventListener("ended", audio._onEnded);
+
+        playNextSound();
+    };
+
+    playmusic.addEventListener("click", () => {
+        if (audio.paused || audio.ended) {
+            playSequence(["/audio/tenbyounoUta.mp3","/audio/내꺼하는법.mp3", "/audio/SUPADOPA.mp3"]);
+        } else {
+            audio.pause();
+        }
+    });
+</script>

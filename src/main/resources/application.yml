@@ -1,0 +1,22 @@
+spring:
+  application:
+    name:yunifanpage
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:55001/yunipage?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+    username: root
+    password: 6262
+
+server:
+  port: 443
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: 6262
